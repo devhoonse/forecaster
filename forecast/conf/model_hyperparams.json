@@ -1,0 +1,115 @@
+{
+    "occr": {
+        "CoxPHFitter": {
+            "__init__": {
+                "penalizer": 0.01
+            },
+            "train_date": "20210112",
+            "data_params": ["df"],
+            "fit": {
+                "duration_col": "TIME_YEARS",
+                "event_col": "STATUS"
+            },
+            "predict": {
+                "grade": {
+                    "cutters": [3.94913292292033e-07, 5.120409193733079e-07, 8.357030286284063e-07, 1.4556946306831904e-06, 3.411849129195954e-06, 6.239213447652287e-06, 0.002114848210508282], 
+                    "labels": false
+                }
+            }
+        }
+    },
+    "pdmg": {
+        "mlp": {
+            "__init__": {
+                "hidden_layer_sizes": [100,100,100], 
+                "max_iter": 1000, 
+                "alpha": 0.0001,
+                "solver": "sgd", 
+                "verbose": 10,  
+                "random_state": 21,
+                "tol": 0.000000001
+            },
+            "train_date": "20210113",
+            "data_params": ["X", "Y"],
+            "fit": {
+                
+            },
+            "predict": {
+                
+            }
+        },
+        "rf": {
+            "__init__": {
+                "base_estimator": {
+                    "__init__": {
+                        "max_depth": 5, 
+                        "splitter": "best", 
+                        "max_features": "sqrt"
+                    }
+                },
+                "n_estimators": 10000,
+                "bootstrap": true
+            },
+            "train_date": "20210113",
+            "data_params": ["X", "Y"],
+            "fit": {
+                
+            },
+            "predict": {
+                
+            }
+        },
+        "xgb": {
+            "__init__": {
+                
+            },
+            "train_date": "20210113",
+            "data_params": ["X", "Y"],
+            "fit": {
+                "booster": "gbtree", 
+                "objective": "multi:softmax", 
+                "num_class": 4,
+                "num_round": 50
+            },
+            "predict": {
+                
+            }
+        }
+    },
+    "hdmg": {
+        "HdmgHeuristic": {
+            "__init__": {
+                "SIDO_HOLD_PCNT_WEIGHT": {
+                    "11": 1.02, 
+                    "26": 0.98, 
+                    "27": 0.97, 
+                    "28": 0.98, 
+                    "29": 0.96, 
+                    "30": 0.96, 
+                    "31": 0.96, 
+                    "36": 0.95, 
+                    "41": 1.05, 
+                    "42": 0.98, 
+                    "43": 0.97, 
+                    "44": 0.98, 
+                    "45": 0.97, 
+                    "46": 0.98, 
+                    "47": 0.99, 
+                    "48": 0.98, 
+                    "50": 0.96
+                }
+            },
+            "train_date": "",
+            "data_params": ["df"],
+            "fit": {
+                
+            },
+            "predict": {
+                "grade": {
+                    "cutters": [0.089151, 0.10939, 0.132159], 
+                    "labels": false
+                }
+            }
+        }
+    }
+}

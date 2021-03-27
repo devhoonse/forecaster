@@ -1,0 +1,54 @@
+{
+    "version": 1.0,
+    
+    "formatters": {
+        "default": {
+            "format": "[%(levelname)s] %(asctime)s / @%(module)s::%(name)s / %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        },
+        "verbose": {
+            "format": "[%(levelname)s] %(asctime)s / @%(module)s::%(funcName)s::%(lineno)s / %(message)s",
+            "datefmt": "%Y-%m-%d %H:%M:%S"
+        }
+    },
+    
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "verbose",
+            "stream": "ext://sys.stdout"
+        },
+        "file_debug": {
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "level": "DEBUG",
+            "formatter": "verbose",
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 4,
+            "filename": "/path/to/debug.log"
+        },
+        "file_error": {
+            "class": "logging.handlers.TimedRotatingFileHandler",
+            "level": "ERROR",
+            "formatter": "verbose",
+            "when": "midnight",
+            "interval": 1,
+            "backupCount": 4,
+            "filename": "/path/to/error.log"
+        }
+    },
+    
+    "loggers": {
+        "debug-logger": {
+            "level": "DEBUG",
+            "handlers": ["file_debug"],
+            "propagate": true
+        },
+        "error-logger": {
+            "level": "ERROR",
+            "handlers": ["file_error"],
+            "propagate": true
+        }
+    }
+}
